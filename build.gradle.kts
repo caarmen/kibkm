@@ -13,7 +13,9 @@ repositories {
 }
 
 kotlin {
-    android()
+    android() {
+        publishLibraryVariants("release", "debug")
+    }
     iosX64("ios") {
         binaries {
             framework {
@@ -51,3 +53,5 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
+apply(from = "publish.gradle.kts")

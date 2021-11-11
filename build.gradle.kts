@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.example"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     google()
@@ -13,16 +13,10 @@ repositories {
 }
 
 kotlin {
-    android() {
+    android {
         publishLibraryVariants("release", "debug")
     }
-    iosX64("ios") {
-        binaries {
-            framework {
-                baseName = "library"
-            }
-        }
-    }
+    val iosMain = sourceSets.create("iosMain")
     sourceSets {
         val commonMain by getting
         val commonTest by getting
@@ -36,8 +30,24 @@ kotlin {
                 implementation("junit:junit:4.13")
             }
         }
-        val iosMain by getting
-        val iosTest by getting
+        //val iosMain by getting
+        //val iosTest by getting
+    }
+    iosArm64 {
+        compilations.getByName("main").source(iosMain)
+        binaries {
+            framework {
+                baseName = "libkm"
+            }
+        }
+    }
+    iosX64 {
+        compilations.getByName("main").source(iosMain)
+        binaries {
+            framework {
+                baseName = "libkm"
+            }
+        }
     }
 }
 

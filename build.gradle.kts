@@ -12,6 +12,10 @@ repositories {
 }
 
 kotlin {
+    js {
+        browser {
+        }
+    }
     jvm {
         compilations.all {
             kotlinOptions.jvmTarget = "1.8"

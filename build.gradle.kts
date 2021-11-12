@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform") version "1.5.31"
+    id("maven-publish")
 }
 
 group = "com.example"
@@ -37,5 +38,3 @@ kotlin {
         }
     }
 }
-
-apply(from = "publish.gradle.kts")
